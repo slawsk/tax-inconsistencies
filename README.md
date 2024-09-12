@@ -1,4 +1,4 @@
-# tax-inconsistencies
+# Tax Inconsistencies
 
 This repository includes files with the code and verifications discussed in Limiting Inconsistencies in Legal Languages. Specifically, here you can find:
 
