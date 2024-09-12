@@ -1,0 +1,75 @@
+CHECKING USING THE UNITS OF DAYS:
+
+Checking the equivalence using the maximum of the two relevant lengths, these two values are not always equal to each other. A model in which they are not equal is
+[OwnedS1 = 367,
+ UsedS1 = 1459,
+ PreviousSaleS1 = 1458,
+ UsedS2 = 1459,
+ PreviousSaleS2 = 366]
+This model results in a sum limitation of $251,027, with a limitation for Spouse1 of $125,685 and a limitation for Spouse2 of $125,342. The relevant length for Spouse1 is 367, and the relevant length for Spouse2 is 366.
+This model results in a 121(c) limitation of $251,370. The relevant length for married is 367.
+
+
+Checking the equivalence using the minimum of the two relevant lengths, these two values are not always equal to each other. A model in which they are not equal is
+[PreviousSaleS2 = 729,
+ OwnedS1 = 728,
+ UsedS1 = 366,
+ UsedS2 = 730,
+ PreviousSaleS1 = 1459]
+This model results in a sum limitation of $374,658, with a limitation for Spouse1 of $125,342 and a limitation for Spouse2 of $249,315. The relevant length for Spouse1 is 366, and the relevant length for Spouse2 is 728.
+This model results in a 121(c) limitation of $250,685. The relevant length for married is 366.
+
+
+Checking the equivalence using the average of the two relevant lengths, SumLimitation and Section121CLimitation are always equal.
+
+
+CHECKING USING THE UNITS OF MONTHS:
+
+Checking the equivalence using the maximum of the two relevant lengths, these two values are not always equal to each other. A model in which they are not equal is
+[UsedS1 = 47,
+ UsedS2 = 47,
+ PreviousSaleS2 = 13,
+ PreviousSaleS1 = 46,
+ OwnedS1 = 14]
+This model results in a sum limitation of $281,250, with a limitation for Spouse1 of $145,833 and a limitation for Spouse2 of $135,417. The relevant length for Spouse1 is 14, and the relevant length for Spouse2 is 13.
+This model results in a 121(c) limitation of $291,667. The relevant length for married is 14.
+
+
+Checking the equivalence using the minimum of the two relevant lengths, these two values are not always equal to each other. A model in which they are not equal is
+[UsedS1 = 47,
+ UsedS2 = 22,
+ PreviousSaleS2 = 23,
+ OwnedS1 = 21,
+ PreviousSaleS1 = 20]
+This model results in a sum limitation of $427,083, with a limitation for Spouse1 of $208,333 and a limitation for Spouse2 of $218,750. The relevant length for Spouse1 is 20, and the relevant length for Spouse2 is 21.
+This model results in a 121(c) limitation of $416,667. The relevant length for married is 20.
+
+
+Checking the equivalence using the average of the two relevant lengths, SumLimitation and Section121CLimitation are always equal.
+
+
+CHECKING USING THE UNITS OF YEARS:
+
+Checking the equivalence using the maximum of the two relevant lengths, these two values are not always equal to each other. A model in which they are not equal is
+[PreviousSaleS1 = 3,
+ UsedS1 = 3,
+ UsedS2 = 2,
+ PreviousSaleS2 = 1,
+ OwnedS1 = 2]
+This model results in a sum limitation of $375,000, with a limitation for Spouse1 of $250,000 and a limitation for Spouse2 of $125,000. The relevant length for Spouse1 is 2, and the relevant length for Spouse2 is 1.
+This model results in a 121(c) limitation of $500,000. The relevant length for married is 2.
+
+
+Checking the equivalence using the minimum of the two relevant lengths, these two values are not always equal to each other. A model in which they are not equal is
+[UsedS1 = 2,
+ UsedS2 = 2,
+ PreviousSaleS2 = 1,
+ OwnedS1 = 3,
+ PreviousSaleS1 = 3]
+This model results in a sum limitation of $375,000, with a limitation for Spouse1 of $250,000 and a limitation for Spouse2 of $125,000. The relevant length for Spouse1 is 2, and the relevant length for Spouse2 is 1.
+This model results in a 121(c) limitation of $250,000. The relevant length for married is 1.
+
+
+Checking the equivalence using the average of the two relevant lengths, SumLimitation and Section121CLimitation are always equal.
+
+
