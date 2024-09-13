@@ -30,7 +30,7 @@ def verify_121_limitation_branch(determinemarried, timeperiod='years'):
     variables = [OwnedS1, OwnedS2, UsedS1, UsedS2, PreviousSaleS1, PreviousSaleS2]
     
 
-    # allowing the denominator to be years, even though only months or days is allowed
+    # allowing the denominator to be years, even though only months or days are allowed,
     # because the "years" answer may give a helpfully intuitive response
     denom_dict = {'years':1,'months':12,'days':365}
 
@@ -140,7 +140,7 @@ def verify_121_limitation_branch(determinemarried, timeperiod='years'):
                                     )
 
     # successful previous sale; this is a genuine question and I'm not sure
-    # what this would mean. See notes for how this is treated. Here I've said that
+    # what this would mean. Here I've said that
     # they both have to succeed for this to succeed 
 
     # “if a single taxpayer who is otherwise eligible for an exclusion marries someone
@@ -153,10 +153,10 @@ def verify_121_limitation_branch(determinemarried, timeperiod='years'):
     successful_previous_sale = And(meets(PreviousSaleS1),meets(PreviousSaleS2))
 
     # section 121(c) applies if they fail one of these
-    section_121_c_coniditions_fail = Or(Not(successful_ownership_use),Not(successful_previous_sale))
+    section_121_c_conditions_fail = Or(Not(successful_ownership_use),Not(successful_previous_sale))
 
     # force Section 121(c) to be triggered
-    s.add(section_121_c_coniditions_fail)
+    s.add(section_121_c_conditions_fail)
 
     # what is the relevant length of ownership, use, and previous sale if the couple is married?
     # three options: maximum, minimum, average. The program checks all three of these possibilities.
@@ -170,14 +170,14 @@ def verify_121_limitation_branch(determinemarried, timeperiod='years'):
 
     married_121_c = create_121_c(ReasonMoveCouple,married_limitation,relevant_length_married)
 
-    Section121cLimitation = If(section_121_c_coniditions_fail,married_121_c,married_limitation)
+    Section121cLimitation = If(section_121_c_conditions_fail,married_121_c,married_limitation)
 
     # This is kind of a side note, but notice that thm1 is false and thm2 is true. This is because
     # the requirement for (b)(2) is actually stricter: If one spouse meets ownership and use, that 
     # is not enough; the other spouse must also meet use. In 121(c), in contrast, it appears that
     # one spouse meeting ownership and use is enough, because of 121(d)(1).
-    thm1 = Implies(married_limitation_conditions_fail,section_121_c_coniditions_fail)
-    thm2 = Implies(section_121_c_coniditions_fail,married_limitation_conditions_fail)
+    thm1 = Implies(married_limitation_conditions_fail,section_121_c_conditions_fail)
+    thm2 = Implies(section_121_c_conditions_fail,married_limitation_conditions_fail)
     
 
     ### Now check to see whether the Sum Limitation is always equal to the 121(c) limitation
