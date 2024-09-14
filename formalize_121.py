@@ -13,7 +13,7 @@ def greater_of(x, y):
 
 # We are going to look for (1) the maximum amount that can be excluded under Section 121,
 # for (2) two spouses, who are (3) filing jointly, who both (4) moved for a "good reason,"
-# amd who for some reason (5) do not qualify for the full $500,000 limitation.
+# and who for some reason (5) do not qualify for the full $500,000 limitation.
 # This does *not* check for the amount of gain or the amount of the exclusion;
 # this is looking for the "limitation."
 
