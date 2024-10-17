@@ -1,0 +1,114 @@
+```catala
+
+declaration structure Household:
+  data income content money
+  data nb_children content integer
+
+declaration scope WithoutPriority:
+  input house content Household
+  output tax_rate content decimal
+
+scope WithoutPriority:
+
+  # (a) The tax rate shall equal 20%, except as otherwise specified in this section.
+  definition tax_rate equals 20%
+
+  # (b) For any family with three or more children, the tax rate shall equal 15%.
+  label number_of_children_exception
+  exception definition tax_rate under condition house.nb_children >= 3
+	consequence equals 15%
+
+  # (c) For any family with income of $10,000 or less, the tax rate shall equal 10%.
+  label low_income_exception
+  exception definition tax_rate under condition house.income <= $10,000
+	consequence equals 10%
+
+
+declaration scope SampleComputationWithoutPriority:
+  output computation content WithoutPriority
+
+scope SampleComputationWithoutPriority:
+  definition computation equals output of WithoutPriority with 
+  { -- house : Household { -- income: $5000 --  nb_children: 4 } }
+
+declaration scope Test_Without_Priority:
+  s scope WithoutPriority
+  input house content Household
+  output tax_rate content decimal
+
+scope Test_Without_Priority:
+  assertion (house.income > $100)
+  definition s.house equals house
+  definition tax_rate equals s.tax_rate
+
+
+declaration scope LowIncomePriority:
+  input house content Household
+  output tax_rate content decimal
+
+scope LowIncomePriority:
+
+  definition tax_rate equals 20%
+
+  label number_of_children_exception
+  exception definition tax_rate under condition house.nb_children >= 3
+	consequence equals 15%
+
+  label low_income_exception
+  exception number_of_children_exception 
+    definition tax_rate under condition house.income <= $10,000
+	consequence equals 10%
+
+declaration scope ChildrenPriority:
+  input house content Household
+  output tax_rate content decimal
+
+
+scope ChildrenPriority:
+
+  definition tax_rate equals 20%
+
+  label low_income_exception
+  exception
+    definition tax_rate under condition house.income <= $10,000
+	consequence equals 10%
+
+  label number_of_children_
+  exception low_income_exception
+  definition tax_rate under condition house.nb_children >= 3
+	consequence equals 15%
+
+
+declaration scope SampleWithLowIncomePriority:
+  output computation content LowIncomePriority
+
+scope SampleWithLowIncomePriority:
+  definition computation equals output of LowIncomePriority with 
+  { -- house : Household { -- income: $5000 --  nb_children: 4 } }
+
+
+declaration scope ForceChoice: 
+    input household content Household 
+    input children_exception_dominates content boolean 
+    output tax_rate content decimal 
+
+scope ForceChoice: 
+
+    definition tax_rate equals 
+      if children_exception_dominates 
+  	      then let interim_output equals output of ChildrenPriority with { -- house : household } in interim_output.tax_rate
+  	  else let interim_output equals output of LowIncomePriority with { -- house : household } in interim_output.tax_rate
+
+
+  declaration scope SampleForceChoice: 
+    output computation content ForceChoice 
+
+  scope SampleForceChoice: 
+    definition computation equals output of ForceChoice with  
+   { -- household : Household { -- income: $5000 --  nb_children: 4 } 
+     -- children_exception_dominates : true} 
+
+
+
+
+```
