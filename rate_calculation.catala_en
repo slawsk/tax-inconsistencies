@@ -5,6 +5,10 @@ declaration scope WithoutPriority:
   input nb_children content integer
   output tax_rate content decimal
 
+# To run this scope:
+# catala interpret -s WithoutPriority rate_calculation.catala_en
+# More generally: catala interpret -s SCOPENAME FILENAME for any of the scopes in this file.
+
 scope WithoutPriority:
 
   # (a) The tax rate shall equal 20%, except as otherwise specified in this section.
@@ -33,6 +37,9 @@ declaration scope TestWithoutPriority:
   input income content money
   input nb_children content integer
   output tax_rate content decimal
+
+# To run the conocolic test, after installing CUTECat:
+# catala Concolic --conc-optim=all --conc-optim=soft -s TestWithoutPriority rate_calculation.catala_en
 
 scope TestWithoutPriority:
   assertion (income > $100)
@@ -102,10 +109,14 @@ scope ForceChoice:
       else let interim_output equals output of LowIncomePriority with  { -- income : income -- nb_children : nb_children } in interim_output.tax_rate
 
 
-  declaration scope SampleForceChoice:
+declaration scope SampleForceChoice:
     output computation content ForceChoice
 
-  scope SampleForceChoice:
+# To run this scope:
+# catala interpret -s SampleForceChoice rate_calculation.catala_en
+# Change the children_exception_dominates value from false to true to false to see the different outcomes
+
+scope SampleForceChoice:
     definition computation equals output of ForceChoice with
    { -- income: $5000
      --  nb_children: 4
